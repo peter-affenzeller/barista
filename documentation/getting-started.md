@@ -1,64 +1,29 @@
 # Get started
 
-## Step 1: Install the barista-components and Angular CDK
+## TLDR;
 
-Install the Barista components library via npm or yarn:
+`ng add @dynatrace/barista-components`
 
-`npm install --save @dynatrace/barista-components @angular/cdk highcharts@6 @types/highcharts @dynatrace/barista-icons d3-scale@^3.0.0 d3-shape@^1.3.5`  
-or  
-`yarn add @dynatrace/barista-components @angular/cdk highcharts@6 @types/highcharts @dynatrace/barista-icons d3-scale@^3.0.0 d3-shape@^1.3.5`
+## Installation
 
-## Step 2: Animations
+To install our barista components use our ng-add schematics with
+`ng add @dynatrace/barista-components`. This will guide you through our
+installation process and will ask you some questions.
 
-Some Barista components depend on the Angular animations module. If you want
-these animations to work in your app, you have to install the
-`@angular/animations` module and include the `BrowserAnimationsModule` in your
-app.
+1. The path to the NgModule where the imports will be registered.
+2. If the Browser animation should be enabled.
+3. If you want our typography styles or only the base styles for the components.
+4. If you want to install all our peer dependencies.
 
-`npm install --save @angular/animations`  
-or  
-`yarn add @angular/animations`
+After everything is installed and setup you can start by importing the needed
+module for each component you want to use:
 
 ```typescript
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DtButtonModule } from '@dynatrace/barista-components';
 
 @NgModule({
   ...
-  imports: [BrowserAnimationsModule],
-  ...
-})
-export class AppModule { }
-```
-
-If you don't want to add another dependency to your project, you can use the
-NoopAnimationsModule.
-
-```typescript
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-
-@NgModule({
-  ...
-  imports: [NoopAnimationsModule],
-  ...
-})
-export class AppModule { }
-```
-
-**Note:** @angular/animations uses the WebAnimation API that isn't supported by
-all browsers yet. If you want to support animations in these browsers, you'll
-have to
-[include a polyfill](https://github.com/web-animations/web-animations-js).
-
-## Step 3: Import the component modules
-
-Import the NgModule for each component you want to use:
-
-```typescript
-import {DtButtonModule, DtSelectModule} from '@dynatrace/barista-components';
-
-@NgModule({
-  ...
-  imports: [DtButtonModule, DtSelectModule],
+  imports: [DtButtonModule],
   ...
 })
 export class PizzaPartyAppModule { }
@@ -71,55 +36,3 @@ this module wherever you'd like to use the components.
 **Note:** Whichever approach you use, be sure to import the barista-components
 modules after Angular's BrowserModule, as the import order matters for
 NgModules.
-
-## Step 4: Include the styles
-
-The Barista components library ships with two different variants for including
-styles. You can either import the core styles that are **required** to use the
-barista-components. These core styles are just the bare minimum for the
-component and do not change the global styling of your app.
-
-```scss
-@import '~@dynatrace/barista-components/style/main';
-```
-
-You can also import the second variant, which include in addition to the core
-style also general styling for headlines, text-formatting, ...
-
-```scss
-@import '~@dynatrace/barista-components/style/index';
-```
-
-## Step 5: Optional - add fonts and icon files to your assets
-
-Add this section to the `assets` array in your projects architect in the
-angular.json. This will copy all svgs from the iconpack and all fonts shipped
-with the barista-components library to your dist package and will make Angular
-aware of the file dependencies.
-
-```json
-...
-{
-  "glob": "*.svg",
-  "input": "node_modules/@dynatrace/barista-icons",
-  "output": "/assets/icons"
-},
-{
-  "glob": "**/*",
-  "input": "node_modules/@dynatrace/barista-components/assets/fonts",
-  "output": "/assets/fonts"
-},
-...
-```
-
-To provide the configuration to the application, you will need to add this to
-the providers of your app module.
-
-```typescript
-providers: [
-  {
-    provide: DT_ICON_CONFIGURATION,
-    useValue: { svgIconLocation: `/assets/icons/{{name}}.svg` },
-  },
-],
-```
