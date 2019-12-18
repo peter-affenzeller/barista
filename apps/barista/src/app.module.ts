@@ -61,6 +61,17 @@ import { BaComponentsModule } from './components';
 import { DtBreadcrumbsModule } from '@dynatrace/barista-components/breadcrumbs';
 import { DtThemingModule } from '@dynatrace/barista-components/theming';
 import { DtExamplesModule } from '@dynatrace/barista-components/examples';
+import { BaSearchPage } from './pages/search-page/search-page';
+import { BaSearchService } from './shared/search.service';
+import { DtHighlightModule } from '@dynatrace/barista-components/highlight';
+
+const PAGES = [
+  BaSinglePage,
+  BaIconOverviewPage,
+  BaOverviewPage,
+  BaIndexPage,
+  BaSearchPage,
+];
 
 @NgModule({
   imports: [
@@ -78,6 +89,7 @@ import { DtExamplesModule } from '@dynatrace/barista-components/examples';
     BaComponentsModule,
     DtFormFieldModule,
     DtInputModule,
+    DtHighlightModule,
     DtThemingModule,
     DtExamplesModule,
   ],
@@ -91,16 +103,13 @@ import { DtExamplesModule } from '@dynatrace/barista-components/examples';
     BaPageFooter,
     BaContributors,
     BaPageOutlet,
-    BaSinglePage,
-    BaOverviewPage,
-    BaIconOverviewPage,
     BaTile,
-    BaIndexPage,
     BaSmallTile,
     BaSearch,
     BaToc,
     BaSidenav,
     BaScrollToTop,
+    ...PAGES,
   ],
   providers: [
     BaPageService,
@@ -111,18 +120,17 @@ import { DtExamplesModule } from '@dynatrace/barista-components/examples';
     BaScrollSpyService,
     BaRecentlyOrderedService,
     BaCopyToClipboardService,
+    BaSearchService,
   ],
   entryComponents: [
-    BaSinglePage,
-    BaIconOverviewPage,
     BaPageHeader,
     BaContributors,
     BaPageFooter,
-    BaOverviewPage,
     BaIndexPage,
     BaSmallTile,
     BaSearch,
     BaSidenav,
+    ...PAGES,
   ],
   bootstrap: [BaApp],
 })

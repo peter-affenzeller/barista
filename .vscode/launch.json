@@ -1,0 +1,22 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "tasks": [],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Barista tools Pagebuilder",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "preLaunchTask": "build-barista-tools",
+      "program": "${workspaceFolder}/dist/tools/barista/main.js",
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ]
+    }
+  ]
+}
