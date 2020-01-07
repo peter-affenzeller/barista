@@ -176,16 +176,10 @@ describe('DtTagAdd', () => {
     addTagInstance.open();
     fixture.detectChanges();
     flush();
-    console.log(
-      overlayContainerElement
-        .querySelector('#cdk-overlay-0')!
-        .parentElement!.innerHTML.includes('uitestid'),
-    );
-    console.log(
-      addTagInstance._overlayDir.overlayRef.overlayElement.parentElement!.innerHTML.includes(
-        'uitestid="tag-overlay"',
-      ),
-    );
+
+    expect(addTagInstance._showOverlay).toBe(true);
+    console.log(overlayContainerElement.innerHTML.includes('uitestid'));
+    expect(overlayContainerElement.innerHTML).toContain('uitestid');
   }));
 
   describe('keyevent tests', () => {

@@ -31,8 +31,6 @@ import {
   NgZone,
   OnDestroy,
   Renderer2,
-  Optional,
-  Inject,
 } from '@angular/core';
 import {
   EMPTY,
@@ -45,12 +43,7 @@ import {
 } from 'rxjs';
 import { filter, map, take } from 'rxjs/operators';
 
-import {
-  readKeyCode,
-  DTUITESTCONFIG,
-  DtUiTestConfiguration,
-  setUiTestAttribute,
-} from '@dynatrace/barista-components/core';
+import { readKeyCode } from '@dynatrace/barista-components/core';
 
 import { DtFilterFieldRange } from './filter-field-range';
 
@@ -146,9 +139,6 @@ export class DtFilterFieldRangeTrigger implements OnDestroy {
     private _changeDetectorRef: ChangeDetectorRef,
     zone: NgZone,
     renderer: Renderer2,
-    @Optional()
-    @Inject(DTUITESTCONFIG)
-    private _config?: DtUiTestConfiguration,
   ) {
     // tslint:disable-next-line:strict-type-predicates
     if (typeof window !== 'undefined') {
@@ -182,15 +172,6 @@ export class DtFilterFieldRangeTrigger implements OnDestroy {
     if (this._range) {
       this._attachOverlay();
     }
-    debugger;
-    if (this._overlayRef && this._config) {
-      setUiTestAttribute(
-        this._elementRef,
-        this._overlayRef.overlayElement,
-        this._config,
-      );
-    }
-    console.log('HERE');
   }
 
   /** Closes the filter-field range panel. */

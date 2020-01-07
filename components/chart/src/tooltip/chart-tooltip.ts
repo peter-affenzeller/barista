@@ -44,7 +44,7 @@ import {
   DtUiTestConfiguration,
 } from '@dynatrace/barista-components/core';
 
-import { DtChart, DT_CHART_RESOLVER, DtChartResolver } from '../chart';
+import { DtChart, DT_CHART_RESOLVER } from '../chart';
 import { DtChartTooltipData } from '../highcharts/highcharts-tooltip-types';
 import { PlotBackgroundInfo } from '../utils';
 
@@ -98,7 +98,7 @@ export class DtChartTooltip implements OnDestroy {
     @Inject(DT_CHART_RESOLVER)
     @Optional()
     @SkipSelf()
-    private _resolveParentChart: DtChartResolver,
+    // private _resolveParentChart: DtChartResolver,
     @Optional()
     @Inject(DTUITESTCONFIG)
     private _config?: DtUiTestConfiguration,
