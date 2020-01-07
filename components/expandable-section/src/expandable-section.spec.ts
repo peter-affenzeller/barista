@@ -79,14 +79,14 @@ describe('DtExpandableSection', () => {
     // test toggle method when collapsed
     it('should be expanded when collapsed on toggle', () => {
       expandableSectionInstance.expanded = false;
-      expect(expandableSectionInstance.toggle()).toBe(true);
+      expandableSectionInstance.toggle();
       expect(expandableSectionInstance.expanded).toBe(true);
     });
 
     // test toggle method when expanded
     it('should be collapsed when expanded on toggle', () => {
       expandableSectionInstance.expanded = true;
-      expect(expandableSectionInstance.toggle()).toBe(false);
+      expandableSectionInstance.toggle();
       expect(expandableSectionInstance.expanded).toBe(false);
     });
 
@@ -116,7 +116,8 @@ describe('DtExpandableSection', () => {
       expect(instanceElement.classList).not.toContain(
         'dt-expandable-section-opened',
       );
-      expect(expandableSectionInstance.toggle()).toBe(true);
+      expandableSectionInstance.toggle();
+      expect(expandableSectionInstance.expanded).toBe(true);
       fixture.detectChanges();
       expect(instanceElement.classList).toContain(
         'dt-expandable-section-opened',
