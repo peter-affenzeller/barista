@@ -172,21 +172,14 @@ describe('DtTagAdd', () => {
   }));
 
   // tslint:disable-next-line: dt-no-focused-tests
-  it.only('should propagate attribute to overlay if `uitestid` is provided', fakeAsync(() => {
+  it.only('should propagate attribute to overlay if `uitestid` is provided', () => {
+    console.log(overlayContainerElement.innerHTML);
     addTagInstance.open();
     fixture.detectChanges();
-    flush();
-    console.log(
-      overlayContainerElement
-        .querySelector('#cdk-overlay-0')!
-        .parentElement!.innerHTML.includes('uitestid'),
-    );
-    console.log(
-      addTagInstance._overlayDir.overlayRef.overlayElement.parentElement!.innerHTML.includes(
-        'uitestid="tag-overlay"',
-      ),
-    );
-  }));
+    expect(addTagInstance._showOverlay).toBe(true);
+    console.log(overlayContainerElement.innerHTML);
+    // expect(overlayContainerElement.innerHTML).toContain('uitestid');
+  });
 
   describe('keyevent tests', () => {
     it('should close Overlay when ESCAPE is pressed', () => {
@@ -209,7 +202,11 @@ describe('DtTagAdd', () => {
   selector: 'dt-test-app',
   template: `
     <dt-tag *ngFor="let tag of tags">{{ tag }}</dt-tag>
-    <dt-tag-add (tagAdded)="addTag($event)" uitestid="tag"></dt-tag-add>
+    <dt-tag-add
+      placeholder="insert tag here"
+      (tagAdded)="addTag($event)"
+      uitestid="tag-add"
+    ></dt-tag-add>
   `,
 })
 class DtTagComponent implements OnInit {
