@@ -42,9 +42,7 @@ export class DtTagKey {}
   host: {
     class: 'dt-tag',
     role: 'option',
-    '[attr.aria-disabled]': 'disabled.toString()',
-    '[class.dt-tag-disabled]': 'disabled',
-    '[class.dt-tag-removable]': 'removable && !disabled',
+    '[class.dt-tag-removable]': 'removable',
   },
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
