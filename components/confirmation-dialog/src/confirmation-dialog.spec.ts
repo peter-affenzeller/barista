@@ -211,13 +211,11 @@ describe('ConfirmationDialogComponent', () => {
     }));
   });
   describe('propagate attribute to overlay', () => {
-    // tslint:disable-next-line: dt-no-focused-tests
-    it.only('should propagate attribute to overlay when `uitestid` is provided', fakeAsync(() => {
+    it('should propagate attribute to overlay when `uitestid` is provided', fakeAsync(() => {
       const fixture = TestBed.createComponent(TestComponent);
       fixture.componentInstance.testState = 'missingState';
       fixture.detectChanges();
       tick();
-      // const dialog = getDialog(overlayContainerElement);
       expect(overlayContainerElement.innerHTML).toContain(
         'uitestid="confirmation-dialog-overlay',
       );

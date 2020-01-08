@@ -161,10 +161,9 @@ describe('DtChartTooltip', () => {
     });
   });
   describe('propagate attribute to overlay', () => {
-    // tslint:disable-next-line: dt-no-focused-tests
     it('should propagate attribute to overlay when `uitestid` is provided', fakeAsync(() => {
       mockIntersectionObserver.mockAllIsIntersecting(true);
-      chartComponent.tooltipDataChange.next({
+      chartComponent._highChartsTooltipOpened$.next({
         data: DUMMY_TOOLTIP_DATA_LINE_SERIES,
       });
       fixture.detectChanges();

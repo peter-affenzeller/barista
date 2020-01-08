@@ -348,14 +348,19 @@ describe('DtContextDialog', () => {
       }));
     });
     describe('propagate attribute to overlay', () => {
-      // tslint:disable-next-line: dt-no-focused-tests
-      it.only('should propagate attribute to overlay when `uitestid` is provided', fakeAsync(() => {
-        const fixture = TestBed.createComponent(BasicContextDialog);
+      let fixture;
+      beforeEach(fakeAsync(() => {
+        fixture = TestBed.createComponent(BasicContextDialog);
+        fixture.detectChanges();
+      }));
+      it('should propagate attribute to overlay when `uitestid` is provided', fakeAsync(() => {
         const contextDialog = fixture.componentInstance.contextDialog;
         contextDialog.open();
         fixture.detectChanges();
         tick();
-        console.log(overlayContainerElement.innerHTML);
+        expect(overlayContainerElement.innerHTML).toContain(
+          'uitestid="context-dialog-overlay"',
+        );
       }));
     });
   });

@@ -33,18 +33,17 @@ import {
   ElementRef,
   Inject,
   Optional,
-  SkipSelf,
 } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 
 import {
   isDefined,
   DTUITESTCONFIG,
-  setUiTestAttribute,
   DtUiTestConfiguration,
+  setUiTestAttribute,
 } from '@dynatrace/barista-components/core';
 
-import { DtChart, DT_CHART_RESOLVER } from '../chart';
+import { DtChart } from '../chart';
 import { DtChartTooltipData } from '../highcharts/highcharts-tooltip-types';
 import { PlotBackgroundInfo } from '../utils';
 
@@ -95,10 +94,6 @@ export class DtChartTooltip implements OnDestroy {
     private _overlay: Overlay,
     private _viewContainerRef: ViewContainerRef,
     private _changeDetectorRef: ChangeDetectorRef,
-    @Inject(DT_CHART_RESOLVER)
-    @Optional()
-    @SkipSelf()
-    // private _resolveParentChart: DtChartResolver,
     @Optional()
     @Inject(DTUITESTCONFIG)
     private _config?: DtUiTestConfiguration,

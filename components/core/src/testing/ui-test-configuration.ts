@@ -46,7 +46,6 @@ export function setUiTestAttribute(
   config: DtUiTestConfiguration,
 ): void {
   const el: Element = coerceElement<Element>(element);
-  console.log(config);
   if (el && overlay && el.hasAttribute(config.attributeName)) {
     overlay.setAttribute(
       config.attributeName,
