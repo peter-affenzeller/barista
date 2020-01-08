@@ -35,7 +35,7 @@ import { DtExpandablePanel } from './expandable-panel';
       'dtExpandablePanel && dtExpandablePanel.disabled ? true: null',
     '[attr.aria-disabled]': 'dtExpandablePanel && dtExpandablePanel.disabled',
     '[tabindex]': 'dtExpandablePanel && dtExpandablePanel.disabled ? -1 : 0',
-    '(click)': '_handleClick($event)',
+    '(click)': '_handleClick()',
     '(keydown)': '_handleKeydown($event)',
   },
 })
