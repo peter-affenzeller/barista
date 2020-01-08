@@ -201,7 +201,11 @@ describe('DtTagAdd', () => {
   selector: 'dt-test-app',
   template: `
     <dt-tag *ngFor="let tag of tags">{{ tag }}</dt-tag>
-    <dt-tag-add (tagAdded)="addTag($event)" uitestid="tag"></dt-tag-add>
+    <dt-tag-add
+      placeholder="insert tag here"
+      (tagAdded)="addTag($event)"
+      uitestid="tag-add"
+    ></dt-tag-add>
   `,
 })
 class DtTagComponent implements OnInit {
