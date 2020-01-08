@@ -14,22 +14,7 @@
  * limitations under the License.
  */
 
-import { PackageJson } from '../utils/json-utils';
+import { fs } from 'memfs';
 
-/**
- * Updates the placeholders in the peerDependencies of the release json
- * to the versions found in the root package json
- */
-export function syncPeerDependencyPlaceholder(
-  releaseJson: PackageJson,
-  packageJson: PackageJson,
-  placeholder: string,
-): PackageJson {
-  const updatedJson = { ...releaseJson };
-  for (const [key, value] of Object.entries(releaseJson.peerDependencies)) {
-    if (value.includes(placeholder)) {
-      updatedJson.peerDependencies[key] = packageJson.dependencies[key];
-    }
-  }
-  return updatedJson;
-}
+// Mock node fs with memfs to have lightening fast tests */
+jest.mock('fs', () => fs);

@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-import { PackageJson } from '../utils/json-utils';
+import { join } from 'path';
+const { readFileSync } = jest.requireActual('fs');
 
-/**
- * Updates the placeholders in the peerDependencies of the release json
- * to the versions found in the root package json
- */
-export function syncPeerDependencyPlaceholder(
-  releaseJson: PackageJson,
-  packageJson: PackageJson,
-  placeholder: string,
-): PackageJson {
-  const updatedJson = { ...releaseJson };
-  for (const [key, value] of Object.entries(releaseJson.peerDependencies)) {
-    if (value.includes(placeholder)) {
-      updatedJson.peerDependencies[key] = packageJson.dependencies[key];
-    }
-  }
-  return updatedJson;
+export function getFixture(file: string, baseDir: string = 'fixtures'): string {
+  const filePath = join(__dirname, baseDir, file);
+  return readFileSync(filePath, { encoding: 'utf-8' });
 }

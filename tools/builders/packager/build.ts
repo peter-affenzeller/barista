@@ -28,7 +28,7 @@ import {
   NgPackagerJson,
   AngularJson,
   PackageJson,
-} from '../util/json-utils';
+} from '../utils/json-utils';
 import { syncPeerDependencyPlaceholder } from './sync-dependencies';
 import { PackagerOptions } from './schema';
 import { copyStyles, copyAssets } from './copy-assets';
