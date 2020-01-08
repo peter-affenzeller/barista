@@ -164,7 +164,6 @@ export class DtTagAdd implements AfterViewInit, OnDestroy {
     this._overlayDir.positionChange.pipe(take(1)).subscribe(() => {
       this._panel.nativeElement.scrollTop = 0;
     });
-    console.log(this._elementRef, this._config);
     if (this._elementRef && this._config) {
       setUiTestAttribute(
         this._elementRef,

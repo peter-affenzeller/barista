@@ -20,6 +20,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DtButtonModule } from '@dynatrace/barista-components/button';
+import {
+  DTUITESTCONFIG,
+  DT_DEFAULT_UI_TEST_CONFIG,
+} from '@dynatrace/barista-components/core';
 import { DtIconModule } from '@dynatrace/barista-components/icon';
 import { DtInputModule } from '@dynatrace/barista-components/input';
 import { DtThemingModule } from '@dynatrace/barista-components/theming';
@@ -40,5 +44,11 @@ import { DtTagList } from './tag-list/tag-list';
   ],
   exports: [DtTag, DtTagKey, DtTagAdd, DtTagList],
   declarations: [DtTag, DtTagKey, DtTagAdd, DtTagList],
+  providers: [
+    {
+      provide: DTUITESTCONFIG,
+      useValue: DT_DEFAULT_UI_TEST_CONFIG,
+    },
+  ],
 })
 export class DtTagModule {}

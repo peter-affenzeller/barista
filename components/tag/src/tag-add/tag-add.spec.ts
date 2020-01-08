@@ -171,14 +171,12 @@ describe('DtTagAdd', () => {
     expect(addTagInstance._showOverlay).toBe(false);
   }));
 
-  // tslint:disable-next-line: dt-no-focused-tests
-  it.only('should propagate attribute to overlay if `uitestid` is provided', fakeAsync(() => {
+  it('should propagate attribute to overlay if `uitestid` is provided', fakeAsync(() => {
     addTagInstance.open();
     fixture.detectChanges();
     flush();
 
     expect(addTagInstance._showOverlay).toBe(true);
-    console.log(overlayContainerElement.innerHTML.includes('uitestid'));
     expect(overlayContainerElement.innerHTML).toContain('uitestid');
   }));
 
