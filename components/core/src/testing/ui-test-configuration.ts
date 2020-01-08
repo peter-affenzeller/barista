@@ -17,16 +17,16 @@
 import { ElementRef, InjectionToken } from '@angular/core';
 import { coerceElement } from '@angular/cdk/coercion';
 
-/** Default UI test Attributename */
+/** Default attributename for UI-tests */
 export const UI_TEST_ID = 'uitestid';
 
-/** Interface for Injectiontoken to set UI test attribute to overlay Container */
+/** Interface for Injectiontoken to set UI-test attribute to overlay Container */
 export interface DtUiTestConfiguration {
   attributeName: string;
   constructOverlayAttributeValue(uiTestId: string): string;
 }
 
-/** Default function for setting the UI test attribute */
+/** Default configuration for setting the UI-test attribute */
 export const DT_DEFAULT_UI_TEST_CONFIG: DtUiTestConfiguration = {
   attributeName: UI_TEST_ID,
   constructOverlayAttributeValue(uiTestId: string): string {
@@ -34,12 +34,12 @@ export const DT_DEFAULT_UI_TEST_CONFIG: DtUiTestConfiguration = {
   },
 };
 
-/** Injectiontoken for the DtUiTestConfiguration interface */
+/** Injectiontoken of the UI-test configuration */
 export const DTUITESTCONFIG = new InjectionToken<DtUiTestConfiguration>(
   'DT_UI_TEST_CONFIGURATION',
 );
 
-/** Sets the UI test attribute to the overlay container */
+/** Sets the UI-test attribute to the overlay container */
 export function setUiTestAttribute(
   element: ElementRef | Element,
   overlay: Element,

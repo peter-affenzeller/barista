@@ -341,7 +341,6 @@ describe('DtEventChart', () => {
       );
     });
 
-    // tslint:disable-next-line: dt-no-focused-tests
     it('should propagate attribute to overlay if `uitestid` is provided', () => {
       const firstBubble = fixture.debugElement.query(
         By.css('.dt-event-chart-event'),
