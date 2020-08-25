@@ -28,6 +28,7 @@ import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
+import '@dynatrace/fluid-elements/icon';
 import '@dynatrace/fluid-elements/input';
 import '@dynatrace/fluid-elements/option';
 import '@dynatrace/fluid-elements/popover';
@@ -296,6 +297,7 @@ export class FluidComboBox extends LitElement {
    */
   render(): TemplateResult {
     return html`
+      <fluid-icon></fluid-icon>
       <fluid-input>
         ${this.label
           ? html`<label slot="label" for="combo-box-input-${_unique}"
