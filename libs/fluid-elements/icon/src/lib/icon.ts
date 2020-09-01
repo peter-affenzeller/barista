@@ -14,15 +14,103 @@
  * limitations under the License.
  */
 
-import { LitElement, TemplateResult, html, customElement } from 'lit-element';
+import {
+  css,
+  CSSResult,
+  customElement,
+  html,
+  LitElement,
+  property,
+  TemplateResult,
+  unsafeCSS,
+} from 'lit-element';
+import { FLUID_INPUT_PADDING } from '@dynatrace/fluid-design-tokens';
+
+const ARROW_DOWN_ICON = html`<svg
+  version="1.1"
+  id="Layer_1"
+  xmlns="http://www.w3.org/2000/svg"
+  xlink="http://www.w3.org/1999/xlink"
+  x="0px"
+  y="0px"
+  viewBox="0 0 512 512"
+  enable-background="new 0 0 512 512"
+  space="preserve"
+>
+  <path
+    d="M258.06592,108.0001h-4.13184c-136.58691,0-221.93408,148-221.93408,148s84.53418,148,221.93408,148h4.13184	c137.3999,0,221.93408-148,221.93408-148S394.65283,108.0001,258.06592,108.0001z M332.3667,332.36874	c-20.39893,20.39795-47.52148,31.63135-76.37207,31.63135c-28.85596,0-55.97998-11.23535-76.375-31.63574	C159.22949,311.96884,148,284.84872,148,256.00058c0-28.84912,11.22949-55.96924,31.61963-76.36475	c20.39502-20.40088,47.51855-31.63574,76.375-31.63574c28.85059,0,55.97363,11.2334,76.37207,31.63135	C352.76562,200.02939,364,227.15097,364,256.00058C364,284.8497,352.76562,311.97079,332.3667,332.36874z"
+  ></path>
+  <path
+    d="M255.99475,188.00009c37.5625,0,68.00525,30.44301,68.00525,68.00067	c0,37.55618-30.44275,67.99933-68.00525,67.99933C218.422,324.00009,188,293.55695,188,256.00076	C188,218.4431,218.422,188.00009,255.99475,188.00009z"
+  ></path>
+</svg>`;
+
+export type FluidIconType = 'dropdownopen' | 'dont-watch' | 'overview';
 
 @customElement('fluid-icon')
 export class FluidIcon extends LitElement {
+  /** */
+  static get styles(): CSSResult {
+    return css`
+      :host {
+        display: inline-block;
+
+        --fluid-input--padding: ${unsafeCSS(FLUID_INPUT_PADDING)};
+
+        --fluid-input--foreground-key: var(--color-neutral-140);
+        --fluid-input--background-key: var(--color-neutral-140);
+        --fluid-input--border-key: var(--color-neutral-100);
+        --fluid-input--foreground-key-hover: var(--color-primary-100);
+        --fluid-input--background-key-hover: var(--color-neutral-50);
+        --fluid-input--border-key-hover: var(--color-primary-100);
+        --fluid-input--foreground-key-focus: var(--color-primary-100);
+        --fluid-input--background-key-focus: var(--color-neutral-50);
+        --fluid-input--border-key-focus: var(--color-primary-100);
+
+        --fluid-input--foreground-negative: var(--color-error-80);
+        --fluid-input--border-negative: var(--color-error-80);
+        --fluid-input--foreground-negative-hover: var(--color-error-80);
+        --fluid-input--border-negative-hover: var(--color-error-80);
+        --fluid-input--foreground-negative-focus: var(--color-error-80);
+        --fluid-input--border-negative-focus: var(--color-error-80);
+
+        --fluid-input--foreground-disabled: var(--color-neutral-100);
+        --fluid-input--background-disabled: var(--color-neutral-60);
+        --fluid-input--border-disabled: var(--color-neutral-100);
+
+        --fluid-input--placeholder: var(--color-neutral-100);
+        --fluid-input--hint: var(--color-neutral-100);
+      }
+
+      svg {
+        height: 100%;
+        fill: var(--fluid-input--foreground);
+      }
+    `;
+  }
+
+  /**
+   * Defines the icon to be displayed.
+   * @attr
+   * @type string
+   */
+  @property({ type: String, reflect: false })
+  name: FluidIconType;
+
   /**
    * Render function of the custom element. It is called when one of the
    * observedProperties (annotated with @property) changes.
    */
   render(): TemplateResult {
-    return html`<p>Icon works (hopefully)!</p>`;
+    switch (this.name) {
+      case 'dropdownopen':
+        return ARROW_DOWN_ICON;
+      case 'dont-watch':
+        return ARROW_DOWN_ICON;
+      case 'overview':
+        return ARROW_DOWN_ICON;
+      default:
+        throw new Error('No icon selected');
+    }
   }
 }
