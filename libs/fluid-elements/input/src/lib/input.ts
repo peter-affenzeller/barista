@@ -15,13 +15,13 @@
  */
 
 import {
-  CSSResult,
-  LitElement,
-  TemplateResult,
   css,
+  CSSResult,
   customElement,
   html,
+  LitElement,
   property,
+  TemplateResult,
   unsafeCSS,
 } from 'lit-element';
 import {
@@ -240,7 +240,7 @@ export class FluidInput extends LitElement {
         opacity: 0;
       }
 
-      ::slotted(svg) {
+      ::slotted(fluid-icon) {
         height: 100%;
         fill: var(--fluid-input--foreground);
       }
