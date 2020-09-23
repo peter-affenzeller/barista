@@ -2968,45 +2968,6 @@
         }
       }
     },
-    "fluid-popover": {
-      "root": "libs/fluid-elements/popover",
-      "sourceRoot": "libs/fluid-elements/popover/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "./dist/libs/workspace:typescript",
-          "options": {
-            "tsConfig": "libs/fluid-elements/popover/tsconfig.lib.json",
-            "outDir": "dist/out-tsc"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "package": {
-          "builder": "./dist/libs/workspace:package-element",
-          "options": {
-            "outputPath": "dist/libs/fluid-elements/popover",
-            "entryFile": "dist/out-tsc/libs/fluid-elements/popover/src/index.js",
-            "project": "libs/fluid-elements/popover/package.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/fluid-elements/popover/tsconfig.lib.json",
-              "libs/fluid-elements/popover/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/fluid-elements/popover/**/*"
-            ]
-          }
-        }
-      }
-    },
     "fluid-icon": {
       "root": "libs/fluid-elements/icon",
       "sourceRoot": "libs/fluid-elements/icon/src",
@@ -3175,6 +3136,45 @@
           "options": {
             "jestConfig": "libs/fluid-elements/tab-group/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fluid-virtual-scroll-container": {
+      "root": "libs/fluid-elements/virtual-scroll-container",
+      "sourceRoot": "libs/fluid-elements/virtual-scroll-container/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "./dist/libs/workspace:typescript",
+          "options": {
+            "tsConfig": "libs/fluid-elements/virtual-scroll-container/tsconfig.lib.json",
+            "outDir": "dist/out-tsc"
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "package": {
+          "builder": "./dist/libs/workspace:package-element",
+          "options": {
+            "outputPath": "dist/libs/fluid-elements/virtual-scroll-container",
+            "entryFile": "dist/out-tsc/libs/fluid-elements/virtual-scroll-container/src/index.js",
+            "project": "libs/fluid-elements/virtual-scroll-container/package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/fluid-elements/virtual-scroll-container/tsconfig.lib.json",
+              "libs/fluid-elements/virtual-scroll-container/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/fluid-elements/virtual-scroll-container/**"
+            ]
           }
         }
       }

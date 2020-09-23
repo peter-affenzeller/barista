@@ -1,0 +1,24 @@
+<div class="virtual-scroll">
+  <fluid-virtual-scroll-container
+    [items]="items1"
+    [renderItemFn]="renderItemFn1"
+    [trackByFn]="trackByFn1"
+    itemclass="virtual-scroll-item"
+  ></fluid-virtual-scroll-container>
+</div>
+
+<div class="virtual-scroll">
+  <fluid-virtual-scroll-container
+    [items]="items2"
+    [renderItemFn]="renderItemFn2"
+    [trackByFn]="trackByFn2"
+    itemclass="virtual-scroll-item"
+  ></fluid-virtual-scroll-container>
+</div>
+
+<fluid-button size="small" emphasis="high" (click)="fetchData()">
+  Fetch Data
+</fluid-button>
+<fluid-button size="small" emphasis="medium" (click)="clearRows()">
+  Clear
+</fluid-button>
